@@ -12,8 +12,8 @@ module.exports = app => {
         const user = {...req.body} //Body-parser monta o "objeto" user atraves do body html
         if(req.params.id) user.id = req.params.id
 
-        if(!req.originalUrl.startsWith('/users')) user.tipo = 1 //previne que admin seja cadastrado pela rota de signup
-        if(!req.user || !req.user.tipo == 3) user.tipo = 1 // previne que um usuario se torne admin
+        if(!req.originalUrl.startsWith('/users')) user.userType = 1 //previne que admin seja cadastrado pela rota de signup
+        if(!req.user || !req.user.userType == 3) user.userType = 1 // previne que um usuario se torne admin
 
         try{
             existsOrError(user.name, 'Nome não informado')
@@ -38,6 +38,7 @@ module.exports = app => {
             app.db('users')
                 .update(user)
                 .where({id: user.id})
+                .whereNull('deletedAt')
                 .then(_ => res.status(204).send())
                 .catch(err => res.status(500).send(err))
         } else { //CREATE\\
@@ -50,19 +51,34 @@ module.exports = app => {
 
     const get = (req,res) => {
         app.db('users')
-            .select('id', 'name', 'email', 'tipo')
+            .select('id', 'name', 'email', 'userType')
+            .whereNull('deletedAt')
             .then(users => res.json(users))
             .catch(err => res.status(500).send(err))
     }
 
     const getById = (req,res) => {
         app.db('users')
-            .select('id', 'name', 'email', 'tipo')
+            .select('id', 'name', 'email', 'userType')
             .where({id: req.params.id})
+            .whereNull('deletedAt')
             .first()
             .then(user => res.json(user))
             .catch(err => res.status(500).send(err))
     }
 
-    return{save, get, getById}
+    const remove = async (req, res) => {
+        try{
+            const rowsUpdated = await app.db('users')
+                .update({deletedAt: new Date()})
+                .where({id: req.params.id})
+            existsOrError(rowsUpdated, 'Usuário não encontrado')
+
+            res.status(204).send()
+        }catch(e){
+            res.status(400).send(e)
+        }
+    }
+
+    return{save, get, getById, remove}
 }

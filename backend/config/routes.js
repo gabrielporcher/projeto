@@ -1,4 +1,4 @@
-const allow = require('./permission')
+const admin = require('./permission')
 
 module.exports = app => {
     //Essas serão as unicas URLS publicas (Não precisam do token)
@@ -8,11 +8,12 @@ module.exports = app => {
 
     app.route('/users')
         .all(app.config.passport.authenticate()) //Filtro do passport
-        .post(allow(app.api.user.save))
-        .get(allow(app.api.user.get))
+        .post(admin(app.api.user.save))
+        .get(admin(app.api.user.get))
 
     app.route('/users/:id')
         .all(app.config.passport.authenticate())
-        .put(allow(app.api.user.save))
-        .get(allow(app.api.user.getById))
+        .put(admin(app.api.user.save))
+        .get(admin(app.api.user.getById))
+        .delete(admin(app.api.user.remove))
 }

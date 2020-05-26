@@ -10,6 +10,7 @@ module.exports = app => {
 
         const user = await app.db('users')
             .where({email: req.body.email})
+            .whereNull('deletedAt')
             .first()
 
         if(!user) return res.status(400).send('Usuario não encontrado')
@@ -23,7 +24,7 @@ module.exports = app => {
             id: user.id,
             name: user.name,
             email: user.email,
-            tipo: user.tipo,
+            userType: user.userType,
             iat: now, //Issued At Time
             exp: now + (60 * 60 * 24 * 3) //Data de expiração do token
                     // (60 segundos * 60 = 1 hora // * 24 = 1 dia // * 3 = 3 dias)

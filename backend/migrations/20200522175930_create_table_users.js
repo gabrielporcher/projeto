@@ -5,7 +5,7 @@ exports.up = function(knex) {
         table.string('name').notNull()
         table.string('email').notNull().unique()
         table.string('password').notNull()
-        table.integer('tipo').notNull().defaultTo(1)
+        table.integer('userType').notNull().defaultTo(1)
   })
 };
 

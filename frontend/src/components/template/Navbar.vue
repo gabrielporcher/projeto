@@ -19,23 +19,27 @@
           <v-btn icon v-on="on" color="grey" dark><v-icon>mdi-menu-down</v-icon></v-btn>
           </template>
           
-          <v-list>
-            <v-list-item>
-              <router-link class="teste" to="/about">Config</router-link>
-            </v-list-item>
-            <v-list-item>
+          <div class="dropdown-content">
+              <router-link class="teste" to="/user">Editar</router-link>
+
               <a class="teste" href @click.prevent="logout"> Sair </a>
-            </v-list-item>
-          </v-list>
+          </div>
 
         </v-menu>
 
      </v-app-bar>
 
       <v-navigation-drawer class="indigo" absolute v-model="drawer">
-        <p>teste 1</p>
-        <router-link to="/">Index</router-link>
-        <router-link to="/admin">Admin</router-link>
+        <v-list>
+          <v-list-item>
+            <v-list-item-icon>
+              <v-icon>mdi-wrench</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title class="title"><router-link to="/admin" class="teste">Gerenciar</router-link></v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
       </v-navigation-drawer>
 
    </nav>
@@ -46,9 +50,11 @@
 
 <script>
 import {userKey} from '@/global'
+import {mapState} from 'vuex'
 
 export default {
     name: 'Navbar',
+    computed: mapState(['user']),
     props: {
       hideNavbar: Boolean
     },
@@ -72,16 +78,27 @@ export default {
   .teste{
     text-decoration: none !important;
     color: #000 !important;
-    padding: 10px;
     text-align: center !important;
+    margin-top: 10px;
   }
 
   .teste a{
     text-decoration: none !important;
     color: #000 !important;
-    padding: 10px;
     text-align: center !important;
   }
+
+.dropdown-content{
+  right: 0px;
+  min-width: 170px;
+  padding: 10px;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+}
 
 
 </style>

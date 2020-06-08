@@ -12,7 +12,7 @@ module.exports = app => {
         const user = {...req.body} //Body-parser monta o "objeto" user atraves do body html
         if(req.params.id) user.id = req.params.id
 
-        if(!req.originalUrl.startsWith('/users')) user.userType = 1 //previne que admin seja cadastrado pela rota de signup
+        //if(!req.originalUrl.startsWith('/users')) user.userType = 1 //previne que admin seja cadastrado pela rota de signup
         if(!req.user || !req.user.userType == 3) user.userType = 1 // previne que um usuario se torne admin
 
         try{

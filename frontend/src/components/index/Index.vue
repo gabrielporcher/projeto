@@ -22,8 +22,6 @@
         </tbody>
       </template>
     </v-simple-table>
-
-    
   </div>
 
 </template>
@@ -31,12 +29,14 @@
 <script>
 import { baseApiUrl} from '@/global'
 import axios from 'axios'
+import {mapState} from 'vuex'
 
 export default {
   name: 'Index',
+  computed: mapState(['user']),
   data: function() {
     return {
-      users: []
+      users: [],
     }
   },
   methods: {

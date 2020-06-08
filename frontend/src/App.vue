@@ -20,7 +20,6 @@ import Navbar from '@/components/template/Navbar'
 import axios from 'axios'
 import {baseApiUrl, userKey} from '@/global'
 import {mapState} from 'vuex'
-
 import Content from '@/components/template/Content'
 
 export default {

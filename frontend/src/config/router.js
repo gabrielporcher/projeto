@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import Index from '@/components/index/Index'
 import Auth from '@/components/auth/Auth'
 import Admin from '@/components/admin/Admin'
+import User from '@/components/user/User'
 
 import {userKey} from '@/global'
 
@@ -17,6 +18,11 @@ const routes = [{
     name: 'auth',
     path: '/auth',
     component: Auth
+},{
+    name: 'user',
+    path: '/user',
+    component: User
+
 }, {
     name: 'Admin',
     path: '/admin',

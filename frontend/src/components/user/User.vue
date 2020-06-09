@@ -56,13 +56,17 @@ export default {
               password: this.user.password,
               confirmPassword: this.user.confirmPassword
           }
-          console.log("Id: "+this.usuario.id+" name: "+this.usuario.name+" Email: "+this.usuario.email+" Password: "+this.usuario.password +" confirmacao: "+this.usuario.confirmPassword+" Tipo: "+this.usuario.userType)
             axios.put(`${baseApiUrl}/user/${id}`, this.usuario)
                 .then(() =>{
                     this.$toasted.global.defaultSuccess()
+                    this.reset()
                     this.$router.push({ name: 'index' })
                 })
                 .catch(showError)
+      },
+      reset(){
+        this.usuario = {}
+        this.user = {}
       }
   }
 };

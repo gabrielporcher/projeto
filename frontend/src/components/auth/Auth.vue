@@ -2,7 +2,7 @@
   <div class="bg-orange">
     <v-container d-flex justify-center>
       <div class="align-self-center">
-        <v-card class="mx-auto" color="white" height="80vh" width="80vw">
+        <v-card class="mx-auto" color="white" elevation="5" height="80vh" width="80vw">
           <v-row>
             <v-col md="5" class="pa-0 hide-div">
               <v-img :src="require('@/assets/botle.jpg')" position="center top" height="80vh"></v-img>

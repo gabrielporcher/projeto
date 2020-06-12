@@ -30,7 +30,7 @@
 
     <v-navigation-drawer class="drawer-color" absolute v-model="drawer">
       <v-list>
-        <v-list-item>
+        <v-list-item @click="drawer = !drawer">
           <v-list-item-icon>
             <v-icon class="icon-drawer">mdi-home</v-icon>
           </v-list-item-icon>
@@ -40,7 +40,7 @@
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item v-if="user.userType == 3">
+        <v-list-item v-if="user.userType == 3" @click="drawer = !drawer">
           <v-list-item-icon>
             <v-icon class="icon-drawer">mdi-wrench</v-icon>
           </v-list-item-icon>
@@ -121,7 +121,8 @@ export default {
   right: 0px;
   min-width: 170px;
   padding: 10px;
-  z-index: 1;
+  z-index: 100;
+  position: relative;
 
   display: flex;
   flex-direction: column;

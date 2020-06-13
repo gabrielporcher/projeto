@@ -40,7 +40,7 @@ router.beforeEach((to, from, next) => { //every router req will pass here
 
     if (to.matched.some(record => record.meta.requiresAdmin)) {
         const user = JSON.parse(json)
-        user && user.userType == 3 ? next() : next({ path: '/' })
+        user && user.userType == 3 || user.userType == 2 ? next() : next({ path: '/' })
     } else {
         next()
     }

@@ -10,7 +10,7 @@ module.exports = app => {
     app.route('/users')
         .all(app.config.passport.authenticate()) //Filtro do passport
         .post(admin(app.api.user.save))
-        .get(app.api.user.get)
+        .get(admin(app.api.user.get))
 
     app.route('/users/:id')
         .all(app.config.passport.authenticate())

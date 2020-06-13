@@ -40,7 +40,7 @@
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item v-if="user.userType == 3" @click="drawer = !drawer">
+        <v-list-item v-if="user.userType == 2 || user.userType == 3" @click="drawer = !drawer">
           <v-list-item-icon>
             <v-icon class="icon-drawer">mdi-wrench</v-icon>
           </v-list-item-icon>

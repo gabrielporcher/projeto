@@ -1,5 +1,6 @@
 const admin = require('./permission')
 const self = require('./selfPermission')
+const brewer = require('./brewer')
 
 module.exports = app => {
     //Essas serão as unicas URLS publicas (Não precisam do token)
@@ -22,5 +23,16 @@ module.exports = app => {
         .all(app.config.passport.authenticate())
         .put(self(app.api.user.save))
         .get(self(app.api.user.getById))
+
+    app.route('/compositions')
+        .all(app.config.passport.authenticate())
+        .get(app.api.composition.get)
+        .post(brewer(app.api.composition.save))
+
+    app.route('/composition/:id')
+        .all(app.config.passport.authenticate())
+        .put(brewer(app.api.composition.save))
+        .get(brewer(app.api.composition.getById))
+        .delete(brewer(app.api.composition.remove))
 
 }

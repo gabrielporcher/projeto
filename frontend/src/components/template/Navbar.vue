@@ -12,7 +12,7 @@
       <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
-
+      
       <v-menu open-on-hover offset-y>
         <template v-slot:activator="{on}">
           <v-btn icon v-on="on" dark>

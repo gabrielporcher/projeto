@@ -29,7 +29,7 @@ module.exports = app => {
         .get(app.api.composition.get)
         .post(brewer(app.api.composition.save))
 
-    app.route('/composition/:id')
+    app.route('/compositions/:id')
         .all(app.config.passport.authenticate())
         .put(brewer(app.api.composition.save))
         .get(brewer(app.api.composition.getById))
@@ -40,7 +40,7 @@ module.exports = app => {
         .get(app.api.smell.get)
         .post(brewer(app.api.smell.save))
 
-    app.route('/smell/:id')
+    app.route('/smells/:id')
         .all(app.config.passport.authenticate())
         .put(brewer(app.api.smell.save))
         .get(brewer(app.api.smell.getById))
@@ -51,7 +51,7 @@ module.exports = app => {
         .get(app.api.beer.get)
         .post(brewer(app.api.beer.save))
 
-    app.route('/beer/:id')
+    app.route('/beers/:id')
         .all(app.config.passport.authenticate())
         .get(app.api.beer.getById)
         .put(brewer(app.api.beer.save))

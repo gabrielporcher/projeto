@@ -94,7 +94,7 @@ import { baseApiUrl, showError } from "@/global";
 import axios from "axios";
 
 export default {
-  name: "Admin",
+  name: "AdminUsers",
   data: function() {
     return {
       mode: "save",

@@ -35,4 +35,25 @@ module.exports = app => {
         .get(brewer(app.api.composition.getById))
         .delete(brewer(app.api.composition.remove))
 
+    app.route('/smells')
+        .all(app.config.passport.authenticate())
+        .get(app.api.smell.get)
+        .post(brewer(app.api.smell.save))
+
+    app.route('/smell/:id')
+        .all(app.config.passport.authenticate())
+        .put(brewer(app.api.smell.save))
+        .get(brewer(app.api.smell.getById))
+        .delete(brewer(app.api.smell.remove))
+
+    app.route('/beers')
+        .all(app.config.passport.authenticate())
+        .get(app.api.beer.get)
+        .post(brewer(app.api.beer.save))
+
+    app.route('/beer/:id')
+        .all(app.config.passport.authenticate())
+        .get(app.api.beer.getById)
+        .put(brewer(app.api.beer.save))
+        .delete(brewer(app.api.beer.remove))
 }

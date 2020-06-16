@@ -32,7 +32,7 @@
           <br />
       </div>
 
-        <v-data-table :items="smells" :headers="headers" items-per-page="5">
+        <v-data-table :items="smells" :headers="headers" :items-per-page="5">
             <template v-slot:item.actions="{item}">
               <v-btn icon color="grey darken-2 ml-2" @click="loadSmell(item, 'save')" class="mx-2">
                 <v-icon>mdi-pencil</v-icon>

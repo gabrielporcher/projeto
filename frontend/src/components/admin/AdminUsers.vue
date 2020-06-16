@@ -75,7 +75,7 @@
             <br />
           </div>
 
-          <v-data-table :items="users" :headers="headers" items-per-page="5">
+          <v-data-table :items="users" :headers="headers" :items-per-page="5">
             <template v-slot:item.actions="{item}">
               <v-btn icon color="grey darken-2 ml-2" @click="loadUser(item, 'save')" class="mx-2">
                 <v-icon>mdi-pencil</v-icon>

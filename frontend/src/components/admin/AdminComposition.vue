@@ -13,7 +13,7 @@
 
             <v-col class="text-center">
                 <v-btn color="success" large v-if="mode === 'save'" @click="save">Salvar</v-btn>
-                <v-btn color="error" large v-if="mode === 'remove'" @click="remove">Salvar</v-btn>
+                <v-btn color="error" large v-if="mode === 'remove'" @click="remove">Excluir</v-btn>
                 <v-btn color="grey darken-2 ml-2" dark large @click="reset">Cancelar</v-btn>
 
             </v-col>
@@ -28,7 +28,7 @@
           <br/>
       </div>
 
-        <v-data-table :items="compositions" :headers="headers" items-per-page="5">
+        <v-data-table :items="compositions" :headers="headers" :items-per-page="5">
             <template v-slot:item.actions="{item}">
               <v-btn icon color="grey darken-2 ml-2" @click="loadComposition(item, 'save')" class="mx-2">
                 <v-icon>mdi-pencil</v-icon>

@@ -6,8 +6,12 @@
         <v-tab>Composição</v-tab>
         <v-tab>Aroma</v-tab>
         <v-tab v-if="user.userType == 3">Users</v-tab>
-        <v-tab-item>Ainda nada</v-tab-item>
-        <v-tab-item>Tambem nada</v-tab-item>
+        <v-tab-item>
+          <AdminBeer />
+        </v-tab-item>
+        <v-tab-item>
+          <AdminComposition />
+        </v-tab-item>
         <v-tab-item>
           <AdminSmell />
         </v-tab-item>
@@ -22,12 +26,14 @@
 <script>
 import AdminUsers from "./AdminUsers"
 import AdminSmell from "./AdminSmell"
+import AdminComposition from "./AdminComposition"
+import AdminBeer from "./AdminBeer"
 import { mapState } from "vuex";
 
 export default {
   name: "Admin",
   computed: mapState(["user"]),
-  components: {AdminUsers, AdminSmell}
+  components: {AdminUsers, AdminSmell, AdminComposition, AdminBeer}
 }
 </script>
 

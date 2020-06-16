@@ -56,4 +56,17 @@ module.exports = app => {
         .get(app.api.beer.getById)
         .put(brewer(app.api.beer.save))
         .delete(brewer(app.api.beer.remove))
+
+    app.route('/brewer/beers')
+        .all(app.config.passport.authenticate())
+        .get(brewer(app.api.beer.getByUser))
+
+    app.route('/styles')
+        .all(app.config.passport.authenticate())
+        .get(app.api.style.get)
+
+
+    app.route('/appearances')
+        .all(app.config.passport.authenticate())
+        .get(app.api.appearance.get)
 }

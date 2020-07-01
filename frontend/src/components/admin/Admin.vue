@@ -5,7 +5,7 @@
         <v-tab>Cerveja</v-tab>
         <v-tab>Composição</v-tab>
         <v-tab>Aroma</v-tab>
-        <v-tab v-if="user.userType == 3">Users</v-tab>
+        <v-tab v-if="user.userType == 3">Usuários</v-tab>
         <v-tab-item>
           <AdminBeer />
         </v-tab-item>

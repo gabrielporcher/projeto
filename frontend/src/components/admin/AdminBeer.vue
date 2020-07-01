@@ -87,7 +87,7 @@
         <br />
     </div>
 
-        <v-data-table :items="beers" :headers="headers" :items-per-page="5">
+        <v-data-table v-if="user.userType == 3" :items="admBeers" :headers="headers" :items-per-page="5">
             <template v-slot:item.actions="{item}">
               <v-btn icon color="grey darken-2 ml-2" @click="loadBeer(item, 'save')" class="mx-2">
                 <v-icon>mdi-pencil</v-icon>
@@ -97,6 +97,17 @@
               </v-btn>
             </template>
         </v-data-table>
+
+        <v-data-table v-else :items="beers" :headers="headers" :items-per-page="5">
+            <template v-slot:item.actions="{item}">
+              <v-btn icon color="grey darken-2 ml-2" @click="loadBeer(item, 'save')" class="mx-2">
+                <v-icon>mdi-pencil</v-icon>
+              </v-btn>
+              <v-btn icon color="error" @click="loadBeer(item, 'remove')" class="mx-2">
+                <v-icon>mdi-trash-can</v-icon>
+              </v-btn>
+            </template>
+        </v-data-table>        
 
   </div>
 </template>
@@ -114,6 +125,7 @@ export default {
             mode: 'save',
             beer: {},
             beers: [],
+            admBeers: [],
             styles: [],
             smells: [],
             compositions: [],
@@ -131,6 +143,13 @@ export default {
             const url = `${baseApiUrl}/brewer/beers`
             axios.get(url).then(res => {
                 this.beers = res.data
+            })
+        },
+
+        loadAdmBeers() {
+            const url = `${baseApiUrl}/beers`
+            axios.get(url).then(res => {
+                this.admBeers = res.data
             })
         },
 
@@ -174,12 +193,15 @@ export default {
             this.mode = 'save'
             this.beer = {}
             this.loadBeers()
+            this.loadAdmBeers()
         },
 
         save(){
             const method = this.beer.id ? 'put' : 'post'
             const id = this.beer.id ? `/${this.beer.id}` : ''
-            this.beer.brewerId = this.user.id
+            const brewerId = this.beer.brewerId
+            this.beer.id ? this.beer.brewerId = brewerId : this.beer.brewerId = this.user.id //Dont change brewerId if an Admin updates any beer
+            
             axios[method](`${baseApiUrl}/beers${id}`, this.beer)
                 .then(() => {
                     this.$toasted.global.defaultSuccess()
@@ -207,6 +229,7 @@ export default {
     watch: {
         page(){
             this.loadBeers()
+            this.loadAdmBeers()
         }
     },
     mounted() {
@@ -215,6 +238,7 @@ export default {
         this.loadAppearances()
         this.loadCompositions()
         this.loadBeers()
+        this.loadAdmBeers()
     }
 }
 </script>

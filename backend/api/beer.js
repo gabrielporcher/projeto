@@ -53,7 +53,6 @@ module.exports = app => {
 
     const get = (req,res) => {
         app.db('beer')
-            .select('id', 'name', 'subtitle', 'srm', 'ibu', 'alcohol', 'description')
             .then(beers => res.json(beers))
             .catch(err => res.status(500).send(err))
     }

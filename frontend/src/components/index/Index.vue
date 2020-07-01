@@ -1,16 +1,48 @@
 <template>
   <div>
-    <h1>BEM-VINDO</h1>
+  
+        <v-row>
+          <v-col cols="12">
+            <v-row justify="space-around" >
+              <div v-for="beer in beers" :key="beer.id">
+                <BeerCardItem :beer="beer" />
+              </div>
+            </v-row>
+          </v-col>
+        </v-row>
+
+      
+
 
   </div>
 
 </template>
 
 <script>
-
+import BeerCardItem from '../beer/BeerCardItem'
+import axios from 'axios'
+import {baseApiUrl} from '@/global'
 
 export default {
   name: 'Index',
+  components: {BeerCardItem},
+  data: function() {
+    return {
+      beers: []
+    }
+  },
+  methods: {
+    getBeers(){
+      const url = `${baseApiUrl}/beers`
+      axios(url).then( res =>{
+        this.beers =this.beers.concat(res.data)
+      })
+
+    }
+  },
+  mounted() {
+    this.getBeers()
+  }
   
 }
 </script>

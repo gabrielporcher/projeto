@@ -6,7 +6,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        user: null
+        user: null,
+        drawer: false
     },
     mutations: {
         setUser(state, user) {
@@ -15,6 +16,14 @@ export default new Vuex.Store({
                 axios.defaults.headers.common['Authorization'] = `bearer ${user.token}`
             } else {
                 delete axios.defaults.headers.common['Authorization']
+            }
+        },
+
+        toggleDrawer(state, visible){
+            if(visible === undefined){
+                state.drawer = !state.drawer
+            } else {
+                state.drawer = visible
             }
         }
     }

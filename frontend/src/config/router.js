@@ -5,6 +5,7 @@ import Index from '@/components/index/Index'
 import Auth from '@/components/auth/Auth'
 import Admin from '@/components/admin/Admin'
 import User from '@/components/user/User'
+import BeerPage from '@/components/beer/BeerPage'
 
 import {userKey} from '@/global'
 
@@ -28,6 +29,10 @@ const routes = [{
     path: '/admin',
     component: Admin,
     meta: {requiresAdmin: true}
+}, {
+    name: 'BeerPage',
+    path: '/beers/:id',
+    component: BeerPage
 }]
 
 const router = new VueRouter({

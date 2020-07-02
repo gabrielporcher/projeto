@@ -3,8 +3,12 @@
     <v-app-bar dark dense app class="grey darken-2">
       <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>
       <v-toolbar-title class="text-uppercase grey--text">
+        <div class="no-decoration">
+          <router-link to="/">
         <span class="font-weight-light">Brew</span>
         <span>erly</span>
+        </router-link>
+        </div>
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
@@ -23,7 +27,7 @@
         <div class="dropdown-content">
           <router-link class="dropdown-text" to="/user">Editar</router-link>
 
-          <a class="dropdown-text" href @click.prevent="logout">Sair</a>
+          <a cleass="dropdown-text" href @click.prevent="logout">Sair</a>
         </div>
       </v-menu>
     </v-app-bar>
@@ -61,39 +65,10 @@ export default {
 </script>
 
 <style>
-.drawer-text {
-  text-decoration: none !important;
-  color: #f8f9f9 !important;
-  text-align: center !important;
-  margin-top: 10px;
-}
-
-.drawer-text a {
-  text-decoration: none !important;
-  color: #f8f9f9 !important;
-  text-align: center !important;
-}
-
-.dropdown-text {
-  text-decoration: none !important;
-  color: #211a19 !important;
-  text-align: center !important;
-  margin-top: 10px;
-}
-
-.dropdown-text a {
-  text-decoration: none !important;
-  color: #211a19 !important;
-  text-align: center !important;
-}
-
-.icon-drawer {
-  color: #f8f9f9 !important;
-}
-
-.drawer-color {
-  background-color: #aaada5 !important;
-}
+.no-decoration a{
+      text-decoration: none !important;
+      color: #9E9E9E !important
+    }
 
 .dropdown-content {
   right: 0px;

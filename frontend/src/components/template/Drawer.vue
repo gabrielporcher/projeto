@@ -41,4 +41,38 @@ export default {
 
 <style>
 
+.drawer-text {
+  text-decoration: none !important;
+  color: #f8f9f9 !important;
+  text-align: center !important;
+  margin-top: 10px;
+}
+
+.drawer-text a {
+  text-decoration: none !important;
+  color: #f8f9f9 !important;
+  text-align: center !important;
+}
+
+.dropdown-text {
+  text-decoration: none !important;
+  color: #211a19 !important;
+  text-align: center !important;
+  margin-top: 10px;
+}
+
+.dropdown-text a {
+  text-decoration: none !important;
+  color: #211a19 !important;
+  text-align: center !important;
+}
+
+.icon-drawer {
+  color: #f8f9f9 !important;
+}
+
+.drawer-color {
+  background-color: #aaada5 !important;
+}
+
 </style>

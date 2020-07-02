@@ -5,6 +5,8 @@
     outlined
     elevation="4"
   >
+  <div class="no-decoration">
+  <router-link :to="{name:'BeerPage', params: {id: beer.id}}">
     <v-list-item three-line>
       <v-list-item-content>
         <p class="category-color overline">Categoria</p>
@@ -21,7 +23,8 @@
       </v-list-item-avatar>
     </v-list-item>
 
-   
+   </router-link>
+   </div>
   </v-card>
 </template>
 
@@ -35,5 +38,9 @@ export default {
 <style>
     .category-color{
         color: #D1791C !important
+    }
+
+    .no-decoration a{
+      text-decoration: none !important;
     }
 </style>

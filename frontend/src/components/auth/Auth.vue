@@ -81,7 +81,7 @@ export default {
         .then(res => {
           this.$store.commit("setUser", res.data);
           localStorage.setItem(userKey, JSON.stringify(res.data)); //Keep user loged in even after close tab
-          this.$router.push({ path: "/" });
+          this.$router.push({ path: "/" }); //Index
         })
         .catch(showError);
     },

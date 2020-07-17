@@ -1,6 +1,6 @@
 <template>
   <v-card
-    class="mx-auto my-5"
+    class="mx-auto my-3"
     max-width="344"
     outlined
     elevation="4"

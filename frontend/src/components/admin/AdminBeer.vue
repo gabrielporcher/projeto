@@ -61,7 +61,7 @@
 
             <v-row class="justify-center">
                 <v-col lg="6" md="6" sm="12" xs="12">
-                    <v-textarea v-model="beer.description" background-color="grey lighten-3" counter="300" :readonly="mode === 'remove'">
+                    <v-textarea v-model="beer.description" background-color="grey lighten-3" counter="800" :readonly="mode === 'remove'">
                         <template v-slot:label>
                             <div>
                                 Descrição

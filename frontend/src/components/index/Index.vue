@@ -1,18 +1,11 @@
 <template>
-  <div>
-  
-        <v-row>
-          <v-col cols="12">
-            <v-row justify="space-around" >
+  <div class="mx-8 my-5">
+
+            <v-row class="justify-space-around">        
               <div v-for="beer in beers" :key="beer.id">
                 <BeerCardItem :beer="beer" />
-              </div>
-            </v-row>
-          </v-col>
-        </v-row>
-
-      
-
+              </div>  
+            </v-row>   
 
   </div>
 

@@ -1,8 +1,8 @@
 <template>
-  <div class="mx-2">
+  <div class="mx-8 my-8">
       <v-row>
           <v-col cols="12" lg="4" md="4" sm="12" xs="12">
-              <v-card class="my-5" elevation="4">
+              <v-card elevation="4" min-height="600">
                   <div class="pa-5">
                       <p class="g1 font-weight-bold mt-2">{{beer.name}}</p>
                       <p class="category-color overline">Categoria</p>
@@ -11,17 +11,36 @@
               </v-card>
           </v-col>
           <v-col cols="12" lg="4" md="4" sm="12" xs="12">
-              <div class="my-5 gbn">
-                  <v-list-item-avatar size="500" rounded >
+              <div class="text-center">
+                  <v-list-item-avatar size="500" >
                       <img v-if="beer.imageUrl != null" :src="beer.imageUrl">
                   </v-list-item-avatar>
               </div>
           </v-col>
-          <v-col cols="12" lg="4" md="6" sm="12" xs="12">
-              <v-card class="my-5" elevation="4">
-                  <v-slider color="yellow" v-model="beer.alcohol" readonly max="15">
-                  </v-slider>
-                  alcool: {{beer.alcohol}}
+          <v-col cols="12" lg="4" md="4" sm="12" xs="12">
+              <v-card elevation="4" min-height="600">
+                    <div class="pa-5">
+                        <v-subheader class="g2 font-weight-bold">Sabor</v-subheader>
+                        <v-slider color="orange accent-4" label="amargo" inverse-label track-color="grey" v-model="beer.ibu" readonly max="70">
+                        </v-slider>
+
+                        <v-subheader class="g2 font-weight-bold">Coloração</v-subheader>
+                        <v-slider color="orange accent-4" label="escura" inverse-label track-color="grey" v-model="beer.srm" readonly max="40">
+                        </v-slider>
+
+                        <v-subheader class="g2 font-weight-bold">Teor Alcoólico</v-subheader>
+                        <v-slider color="orange accent-4" label="forte" inverse-label track-color="grey" v-model="beer.alcohol" readonly max="15">
+                        </v-slider>
+                        
+                        <p class="g2 font-weight-bold">Aparência:</p>
+                        <p>{{beer.appearanceId}}</p>
+
+                        <p class="g2 font-weight-bold">Aroma:</p>
+                        <p>{{beer.smellId}}</p>
+
+                        <p class="g2 font-weight-bold">Composição:</p>
+                        <p>{{beer.compositionId}}</p>
+                    </div>
               </v-card>
           </v-col>
 
@@ -58,7 +77,7 @@ export default {
     font-size: 2rem !important;
 }
 
-.gbn{
-    background-color: indigo !important;
+.g2{
+    font-size: 1.25rem !important;
 }
 </style>

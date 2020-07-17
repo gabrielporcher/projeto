@@ -38,7 +38,7 @@
 
                 <v-col lg="6" md="6" sm="12" xs="12">
                     <v-card-text>
-                        <v-select :items="compositions" label="Composição" required v-model="beer.compositionId" v-show="mode === 'save'"></v-select>
+                        <v-select :items="compositions" label="Composição adicional" required v-model="beer.compositionId" v-show="mode === 'save'"></v-select>
                     </v-card-text>
                 </v-col>
                 <v-col lg="6" md="6" sm="12" xs="12">
@@ -201,6 +201,7 @@ export default {
             const id = this.beer.id ? `/${this.beer.id}` : ''
             const brewerId = this.beer.brewerId
             this.beer.id ? this.beer.brewerId = brewerId : this.beer.brewerId = this.user.id //Dont change brewerId if an Admin updates any beer
+            this.beer.compositionId == 11 ? this.beer.compositionId = null : this.beer.compositionId //If compositionId == 11 means that is it null.
             
             axios[method](`${baseApiUrl}/beers${id}`, this.beer)
                 .then(() => {

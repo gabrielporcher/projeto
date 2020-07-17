@@ -14,7 +14,6 @@ module.exports = app => {
             existsOrError(beer.styleId, 'Estilo não informado')
             existsOrError(beer.smellId, 'Aroma não informado')
             existsOrError(beer.appearanceId, 'Aparência não informada')
-            existsOrError(beer.compositionId, 'Composição não informada')
         } catch(msg){
             res.status(400).send(msg)
         }

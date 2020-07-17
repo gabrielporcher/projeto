@@ -12,7 +12,7 @@
           </v-col>
           <v-col cols="12" lg="4" md="4" sm="12" xs="12">
               <div class="text-center">
-                  <v-list-item-avatar size="500" >
+                  <v-list-item-avatar size="600" >
                       <img v-if="beer.imageUrl != null" :src="beer.imageUrl">
                   </v-list-item-avatar>
               </div>
@@ -38,8 +38,8 @@
                         <p class="g2 font-weight-bold">Aroma:</p>
                         <p>{{beer.smellId}}</p>
 
-                        <p class="g2 font-weight-bold">Composição:</p>
-                        <p>{{beer.compositionId}}</p>
+                        <p class="g2 font-weight-bold" v-if="beer.compositionId">Composição:</p>
+                        <p v-if="beer.compositionId">{{beer.compositionId}}</p>
                     </div>
               </v-card>
           </v-col>

@@ -57,6 +57,10 @@ module.exports = app => {
         .put(brewer(app.api.beer.save))
         .delete(brewer(app.api.beer.remove))
 
+    app.route('/beers/style/:id')
+        .all(app.config.passport.authenticate())
+        .get(app.api.beer.getByStyle)
+
     app.route('/brewer/beers')
         .all(app.config.passport.authenticate())
         .get(brewer(app.api.beer.getByUser))
@@ -64,6 +68,7 @@ module.exports = app => {
     app.route('/styles')
         .all(app.config.passport.authenticate())
         .get(app.api.style.get)
+        .post(admin(app.api.style.save))
 
 
     app.route('/appearances')

@@ -16,18 +16,19 @@
       <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
-      
+
       <v-menu open-on-hover offset-y>
         <template v-slot:activator="{on}">
           <v-btn icon v-on="on" dark>
             <v-icon>mdi-menu-down</v-icon>
           </v-btn>
+          {{user.name}}
         </template>
 
         <div class="dropdown-content">
           <router-link class="dropdown-text" to="/user">Editar</router-link>
 
-          <a cleass="dropdown-text" href @click.prevent="logout">Sair</a>
+          <a class="dropdown-text" href @click.prevent="logout">Sair</a>
         </div>
       </v-menu>
     </v-app-bar>
@@ -80,5 +81,18 @@ export default {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+}
+
+.dropdown-text {
+  text-decoration: none !important;
+  color: #211a19 !important;
+  text-align: center !important;
+  margin-top: 10px;
+}
+
+.dropdown-text a {
+  text-decoration: none !important;
+  color: #211a19 !important;
+  text-align: center !important;
 }
 </style>

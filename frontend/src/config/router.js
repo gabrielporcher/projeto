@@ -6,6 +6,7 @@ import Auth from '@/components/auth/Auth'
 import Admin from '@/components/admin/Admin'
 import User from '@/components/user/User'
 import BeerPage from '@/components/beer/BeerPage'
+import BeerByStyle from '@/components/beer/BeerByStyle'
 
 import {userKey} from '@/global'
 
@@ -33,6 +34,10 @@ const routes = [{
     name: 'BeerPage',
     path: '/beers/:id',
     component: BeerPage
+}, {
+    name: 'BeerByStyle',
+    path: '/beers/style/:id',
+    component: BeerByStyle
 }]
 
 const router = new VueRouter({

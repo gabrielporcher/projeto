@@ -36,6 +36,12 @@ export default {
   },
   mounted() {
     this.getBeers()
+  },
+  watch: {
+    $route() {
+      this.beers = []
+      this.getBeers()
+    }
   }
   
 }

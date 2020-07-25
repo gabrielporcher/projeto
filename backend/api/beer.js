@@ -78,5 +78,12 @@ module.exports = app => {
             .catch(err => res.status(500).send(err))
     }
 
-    return {save,remove,get,getById, getByUser, getByStyle}
+    const getByBrewer = (req,res) => {
+        app.db('beer')
+            .where({brewerId: req.params.id})
+            .then(beers => res.json(beers))
+            .catch(err => res.status(500).send(err))
+    }
+
+    return {save,remove,get,getById, getByUser, getByStyle, getByBrewer}
 }

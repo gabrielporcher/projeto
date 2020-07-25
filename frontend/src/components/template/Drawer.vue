@@ -17,7 +17,7 @@
 
         <v-menu open-on-hover offset-x>
             <template v-slot:activator="{on}">
-              <v-list-item @click="toggleDrawer" v-on="on">
+              <v-list-item v-on="on">
                 <v-list-item-icon>
                   <v-icon class="icon-drawer">mdi-beer</v-icon>
                 </v-list-item-icon>
@@ -28,13 +28,17 @@
                 </v-list-item-content>
               </v-list-item>
             </template>
-              <v-card max-height="450">
-                <v-list>
-                <v-list-item v-for="style in styles" :key="style.id">
-                  <v-list-item-title @click="toggleDrawer"><router-link :to="{ name: 'BeerByStyle', params: { id: style.id }}">{{style.name}}</router-link></v-list-item-title>
-                </v-list-item>
-              </v-list>
-              </v-card>
+            <v-card>
+            <div class="column-wrap pa-5">
+              
+                <div v-for="style in styles" :key="style.id" @click="toggleDrawer">
+                  <router-link class="item-text" :to="{ name: 'BeerByStyle', params: { id: style.id }}">{{style.name}}</router-link>
+                </div>
+                
+                
+             
+            </div>
+            </v-card>
         </v-menu>
         
         <router-link to="/admin">
@@ -118,6 +122,20 @@ a {
 
 .drawer-color {
   background-color: #aaada5 !important;
+}
+
+.item-text {
+  
+  text-decoration: none !important;
+  color: #D1791C !important;
+}
+
+.column-wrap {
+  width: 500px;
+  max-height: 400px;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
 }
 
 </style>

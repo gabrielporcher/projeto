@@ -67,6 +67,15 @@ module.exports = app => {
             .catch(err => res.status(500).send(err))
     }
 
+    const getBrewers = (req,res) => {
+        app.db('users')
+            .select('id', 'name')
+            .where({userType: 2})
+            .whereNull('deletedAt')
+            .then(users => res.json(users))
+            .catch(err => res.status(500).send(err))
+    }
+
     const remove = async (req, res) => {
         try{
             const rowsUpdated = await app.db('users')
@@ -80,5 +89,5 @@ module.exports = app => {
         }
     }
 
-    return{save, get, getById, remove}
+    return{save, get, getById, remove, getBrewers}
 }

@@ -28,7 +28,6 @@ export default {
     getBeers(){
       const url = `${baseApiUrl}/beers/style/${this.$route.params.id}`
       axios(url).then( res =>{
-          console.log(res.data)
         this.beers =this.beers.concat(res.data)
       })
 

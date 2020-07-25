@@ -67,7 +67,7 @@ module.exports = app => {
 
     /*
         /beers/brewer/:id
-        return all beers from ID brewer
+        return all beers from ID requested brewer
     */
     app.route('/beers/brewer/:id')
         .all(app.config.passport.authenticate())

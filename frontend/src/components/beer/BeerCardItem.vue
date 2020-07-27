@@ -9,7 +9,7 @@
   <router-link :to="{name:'BeerPage', params: {id: beer.id}}">
     <v-list-item three-line>
       <v-list-item-content>
-        <p class="category-color overline">Categoria</p>
+        <p class="category-color overline">{{beer.style}}</p>
         <v-list-item-title class="headline mb-1">{{beer.name}}</v-list-item-title>
         <v-list-item-subtitle>{{beer.subtitle}}</v-list-item-subtitle>
       </v-list-item-content>

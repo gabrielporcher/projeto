@@ -61,7 +61,10 @@ export default {
     },
     mounted() {
         const url = `${baseApiUrl}/beers/${this.$route.params.id}`
-        axios.get(url).then(res => this.beer = res.data)
+        axios.get(url).then(res => {
+            console.log(res.data)
+            this.beer = res.data
+        })
     }
 }
 </script>

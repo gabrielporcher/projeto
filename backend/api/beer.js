@@ -50,8 +50,10 @@ module.exports = app => {
         }
     }
 
-    const get = (req,res) => {
+    const get = (req,res) => {     
         app.db('beer')
+            .innerJoin('style', 'beer.styleId', '=', 'style.id')
+            .select('beer.*', {style: 'style.name'})
             .then(beers => res.json(beers))
             .catch(err => res.status(500).send(err))
     }
@@ -74,6 +76,8 @@ module.exports = app => {
     const getByStyle = (req,res) => {
         app.db('beer')
             .where({styleId: req.params.id})
+            .innerJoin('style', 'beer.styleId', '=', 'style.id')
+            .select('beer.*', {style: 'style.name'})
             .then(beers => res.json(beers))
             .catch(err => res.status(500).send(err))
     }
@@ -81,6 +85,8 @@ module.exports = app => {
     const getByBrewer = (req,res) => {
         app.db('beer')
             .where({brewerId: req.params.id})
+            .innerJoin('style', 'beer.styleId', '=', 'style.id')
+            .select('beer.*', {style: 'style.name'})
             .then(beers => res.json(beers))
             .catch(err => res.status(500).send(err))
     }

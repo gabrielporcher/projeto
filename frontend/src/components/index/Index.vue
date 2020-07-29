@@ -1,7 +1,7 @@
 <template>
   <div class="mx-8 my-5">
 
-            <v-row class="justify-space-around">        
+            <v-row class="justify-space-between">        
               <div v-for="beer in beers" :key="beer.id">
                 <BeerCardItem :beer="beer" />
               </div>  

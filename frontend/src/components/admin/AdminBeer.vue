@@ -38,7 +38,7 @@
 
                 <v-col lg="6" md="6" sm="12" xs="12">
                     <v-card-text>
-                        <v-select :items="compositions" label="Composição adicional" required v-model="beer.compositionId" v-show="mode === 'save'"></v-select>
+                        <v-select :items="compositions" label="Composição adicional" v-model="beer.compositionId" v-show="mode === 'save'"></v-select>
                     </v-card-text>
                 </v-col>
                 <v-col lg="6" md="6" sm="12" xs="12">
@@ -147,7 +147,7 @@ export default {
         },
 
         loadAdmBeers() {
-            const url = `${baseApiUrl}/beers`
+            const url = `${baseApiUrl}/beers/change`
             axios.get(url).then(res => {
                 this.admBeers = res.data
             })

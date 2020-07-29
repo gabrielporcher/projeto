@@ -23,7 +23,7 @@ module.exports = app => {
                 .update(beer)
                 .where({id: beer.id})
                 .then(_ => res.status(204).send())
-                .catch(err => res.status(500).send(err))
+                .catch(err => res.status(500).send(console.log(err)))
         } else {
             app.db('beer')
                 .insert(beer)
@@ -50,6 +50,9 @@ module.exports = app => {
         }
     }
 
+    /*
+    Get => View only because of innerJoin (throw an error at update)
+    */
     const get = (req,res) => {     
         app.db('beer')
             .innerJoin('style', 'beer.styleId', '=', 'style.id')
@@ -58,14 +61,32 @@ module.exports = app => {
             .catch(err => res.status(500).send(err))
     }
 
+    /*
+    without joins for edit mode
+    */
+    const getToEdit = (req,res) => {
+        app.db('beer')
+            .then(beers => res.json(beers))
+            .catch(err => res.status(500).send(err))
+    }
+
     const getById = (req,res) => {
         app.db('beer')
-            .where({ id: req.params.id})
+            .where({'beer.id': req.params.id})
+            .innerJoin('style', 'beer.styleId', '=', 'style.id')
+            .innerJoin('smell', 'beer.smellId', '=', 'smell.id')
+            .innerJoin('appearance', 'beer.appearanceId', '=', 'appearance.id')
+            .leftJoin('composition', 'beer.compositionId', '=', 'composition.id')
+            .select('beer.*', {style: 'style.name'}, {smell: 'smell.name'}, {appearance: 'appearance.name'}, {composition: 'composition.name'})
             .first()
             .then(beer => res.json(beer))
             .catch(err => res.status(500).send(err))
     }
 
+    /*
+        return all beers from SELF brewer
+        used in admin panel
+    */
     const getByUser = (req,res) => {
         app.db('beer')
             .where({brewerId: req.user.id})
@@ -82,6 +103,9 @@ module.exports = app => {
             .catch(err => res.status(500).send(err))
     }
 
+    /*
+    return all beers from ID requested brewer
+    */
     const getByBrewer = (req,res) => {
         app.db('beer')
             .where({brewerId: req.params.id})
@@ -91,5 +115,5 @@ module.exports = app => {
             .catch(err => res.status(500).send(err))
     }
 
-    return {save,remove,get,getById, getByUser, getByStyle, getByBrewer}
+    return {save,remove,get,getById, getByUser, getByStyle, getByBrewer, getToEdit}
 }

@@ -50,10 +50,22 @@ module.exports = app => {
         .get(brewer(app.api.smell.getById))
         .delete(brewer(app.api.smell.remove))
 
+        /*
+        /beers returns all beers with sql joins to show
+         components names
+        */
     app.route('/beers')
         .all(app.config.passport.authenticate())
         .get(app.api.beer.get)
         .post(brewer(app.api.beer.save))
+
+        /*
+        return all beers without sql joins
+        to edit them (with no errors)
+        */
+    app.route('/beers/change')
+        .all(app.config.passport.authenticate())
+        .get(admin(app.api.beer.getToEdit))
 
     app.route('/beers/:id')
         .all(app.config.passport.authenticate())

@@ -10,11 +10,9 @@
               </v-card>
           </v-col>
           <v-col cols="12" lg="4" md="4" sm="12" xs="12">
-              <div class="text-center">
-                  <v-list-item-avatar size="600" >
-                      <img v-if="beer.imageUrl != null" :src="beer.imageUrl">
-                  </v-list-item-avatar>
-              </div>
+              <v-sheet class="d-flex justify-center" height="600">
+                  <img class="bgb" v-if="beer.imageUrl != null" :src="beer.imageUrl">
+              </v-sheet>
           </v-col>
           <v-col cols="12" lg="4" md="4" sm="12" xs="12">
               <v-card class="pa-5" elevation="4" min-height="600">
@@ -83,8 +81,8 @@
                                     </v-divider>
                                     <v-card flat>
                                         <br>
-                                        <p class="color-light">Estilo:</p>
-                                        <p class="g2 font-weight-bold category-color">{{beer.style}}</p>
+                                        <p class="color-light">Fabricante:</p>
+                                        <p class="g2 font-weight-bold category-color"><router-link class="category-color" :to="{ name: 'BeerByBrewer', params: { id: beer.brewerId }}">{{beer.users}}</router-link></p>
                                     </v-card> 
                                 </v-card>
                             </v-col>
@@ -140,6 +138,9 @@ export default {
 }
 
 .bgb {
-    background-color: darkgreen !important;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
 }
+
 </style>

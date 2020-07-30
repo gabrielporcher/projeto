@@ -50,13 +50,18 @@ module.exports = app => {
         }
     }
 
+    const limit = 15 //Pagination
+
     /*
     Get => View only because of innerJoin (throw an error at update)
     */
-    const get = (req,res) => {     
+    const get = (req,res) => {   
+        const page = req.query.page || 1
+        
         app.db('beer')
             .innerJoin('style', 'beer.styleId', '=', 'style.id')
             .select('beer.*', {style: 'style.name'})
+            .limit(limit).offset(page * limit - limit)
             .then(beers => res.json(beers))
             .catch(err => res.status(500).send(err))
     }
@@ -76,8 +81,9 @@ module.exports = app => {
             .innerJoin('style', 'beer.styleId', '=', 'style.id')
             .innerJoin('smell', 'beer.smellId', '=', 'smell.id')
             .innerJoin('appearance', 'beer.appearanceId', '=', 'appearance.id')
+            .innerJoin('users', 'beer.brewerId', '=', 'users.id')
             .leftJoin('composition', 'beer.compositionId', '=', 'composition.id')
-            .select('beer.*', {style: 'style.name'}, {smell: 'smell.name'}, {appearance: 'appearance.name'}, {composition: 'composition.name'})
+            .select('beer.*', {style: 'style.name'}, {smell: 'smell.name'}, {appearance: 'appearance.name'}, {users: 'users.name'}, {composition: 'composition.name'})
             .first()
             .then(beer => res.json(beer))
             .catch(err => res.status(500).send(err))
@@ -95,10 +101,13 @@ module.exports = app => {
     }
 
     const getByStyle = (req,res) => {
+        const page = req.query.page || 1
+
         app.db('beer')
             .where({styleId: req.params.id})
             .innerJoin('style', 'beer.styleId', '=', 'style.id')
             .select('beer.*', {style: 'style.name'})
+            .limit(limit).offset(page * limit - limit)
             .then(beers => res.json(beers))
             .catch(err => res.status(500).send(err))
     }
@@ -107,10 +116,13 @@ module.exports = app => {
     return all beers from ID requested brewer
     */
     const getByBrewer = (req,res) => {
+        const page = req.query.page || 1
+
         app.db('beer')
             .where({brewerId: req.params.id})
             .innerJoin('style', 'beer.styleId', '=', 'style.id')
             .select('beer.*', {style: 'style.name'})
+            .limit(limit).offset(page * limit - limit)
             .then(beers => res.json(beers))
             .catch(err => res.status(500).send(err))
     }

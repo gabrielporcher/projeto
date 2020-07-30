@@ -5,6 +5,9 @@
             <BeerCardItem :beer="beer" />
         </div>  
     </v-row>   
+    <div class="text-center my-5">
+        <v-btn large dark outlined color="orange darken-1" v-if="loadMore" @click="getBeers">Carregar mais</v-btn>
+    </div> 
   </div>
 </template>
 
@@ -18,14 +21,19 @@ export default {
     components: {BeerCardItem},
     data: function(){
         return{
-            beers: []
+            beers: [],
+            page: 1,
+            loadMore: true
         }
     },
     methods: {
         getBeers() {
-            const url = `${baseApiUrl}/beers/brewer/${this.$route.params.id}`
+            const url = `${baseApiUrl}/beers/brewer/${this.$route.params.id}?page=${this.page}`
             axios.get(url).then(res => {
-                this.beers = res.data
+                this.beers = this.beers.concat(res.data)
+                this.page++
+
+                if (res.data.length == 0) this.loadMore = false
             })
         }
     },
@@ -43,5 +51,7 @@ export default {
 </script>
 
 <style>
-
+.btn-category-color{
+        background-color: #D1791C !important;  
+    }
 </style>

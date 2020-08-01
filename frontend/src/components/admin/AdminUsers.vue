@@ -53,10 +53,10 @@
               <v-row  class="justify-center">
               <v-radio-group v-model="selected" :mandatory="false" v-show="mode === 'save'">
                 <v-col lg="6" md="6" sm="12" xs="12">
-                <v-radio label="Administrador" value="3"></v-radio>
+                <v-radio label="Cervejaria" value="2"></v-radio>
                 </v-col>
                 <v-col lg="6" md="6" sm="12" xs="12">
-                <v-radio label="Cervejaria" value="2"></v-radio>
+                <v-radio label="Administrador" value="3"></v-radio>
                 </v-col>
               </v-radio-group>
               </v-row>
@@ -100,7 +100,7 @@ export default {
       mode: "save",
       user: {},
       users: [],
-      selected: 1,
+      selected: null,
       headers: [
         { text: "Código", value: "id" },
         { text: "Nome", value: "name" },
@@ -118,12 +118,12 @@ export default {
       });
     },
     reset() {
-      (this.mode = "save"), (this.user = {}), this.loadUsers(), this.selected =1;
+      (this.mode = "save"), (this.user = {}), this.loadUsers(), this.selected = 1;
     },
     save() {
       const method = this.user.id ? "put" : "post";
       const id = this.user.id ? `/${this.user.id}` : "";
-      this.user.userType = this.selected;
+      this.user.userType = this.selected || 1
       axios[method](`${baseApiUrl}/users${id}`, this.user)
         .then(() => {
           this.$toasted.global.defaultSuccess();

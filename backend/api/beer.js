@@ -50,7 +50,7 @@ module.exports = app => {
         }
     }
 
-    const limit = 15 //Pagination
+    const limit = 25 //Pagination
 
     /*
     Get => View only because of innerJoin (throw an error at update)

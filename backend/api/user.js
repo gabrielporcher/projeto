@@ -13,7 +13,7 @@ module.exports = app => {
         if(req.params.id) user.id = req.params.id
 
         //if(!req.originalUrl.startsWith('/users')) user.userType = 1 //previne que admin seja cadastrado pela rota de signup
-        if(!req.user || !req.user.userType == 3) user.userType = 1 // previne que um usuario se torne admin
+        //if(!req.user || !req.user.userType == 3) user.userType = 1 // previne que um usuario se torne admin
 
         try{
             existsOrError(user.name, 'Nome não informado')

@@ -65,7 +65,7 @@ module.exports = app => {
         */
     app.route('/beers/change')
         .all(app.config.passport.authenticate())
-        .get(admin(app.api.beer.getToEdit))
+        .get(brewer(app.api.beer.getToEdit))
 
     app.route('/beers/:id')
         .all(app.config.passport.authenticate())

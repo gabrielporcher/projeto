@@ -11,7 +11,7 @@
                 </v-col>
                 <v-col lg="6" md="6" sm="12" xs="12">
                       <v-card-text>
-                          <v-text-field type="text" label="Subtítulo" v-model="beer.subtitle" hint="Uma única frase ex: A cerveja que desce redondo" persistent-hint required :readonly="mode === 'remove'"></v-text-field>
+                          <v-text-field type="text" label="Subtítulo" v-model="beer.subtitle" hint="Uma única frase" persistent-hint required :readonly="mode === 'remove'"></v-text-field>
                       </v-card-text>
                 </v-col>
                 <v-col lg="6" md="6" sm="12" xs="12">

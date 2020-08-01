@@ -34,7 +34,7 @@ export default {
         this.beers =this.beers.concat(res.data)
         this.page++
 
-        if (res.data.length == 0) this.loadMore = false
+        if (res.data.length === 0) this.loadMore = false
       })
 
     }
@@ -45,6 +45,8 @@ export default {
   watch: {
     $route() {
       this.beers = []
+      this.page = 1
+      this.loadMore = true
       this.getBeers()
     }
   }

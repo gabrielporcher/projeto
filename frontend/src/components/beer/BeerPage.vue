@@ -26,7 +26,7 @@
                         </v-slider>
 
                         <v-subheader class="g2 font-weight-bold">Teor Alcoólico</v-subheader>
-                        <v-slider color="orange accent-4" label="forte" inverse-label track-color="grey" v-model="beer.alcohol" readonly max="15">
+                        <v-slider color="orange accent-4" label="forte" inverse-label track-color="grey" v-model="beer.alcohol" readonly max="13">
                         </v-slider>
                         
                             <br>

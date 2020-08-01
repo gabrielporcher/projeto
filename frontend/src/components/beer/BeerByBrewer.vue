@@ -43,8 +43,9 @@ export default {
     watch: {
         $route() {
             this.beers = []
+            this.page = 1
+            this.loadMore = true
             this.getBeers()
-
         }
     }
 }

@@ -75,6 +75,18 @@ module.exports = app => {
             .catch(err => res.status(500).send(err))
     }
 
+    /*
+    With style join to complete Beer Card Item.
+    Without pagination for search
+    */
+    const searchGet = (req,res) => {
+        app.db('beer')
+            .innerJoin('style', 'beer.styleId', '=', 'style.id')
+            .select('beer.*', {style: 'style.name'})
+            .then(beers => res.json(beers))
+            .catch(err => res.status(500).send(err))
+    }
+
     const getById = (req,res) => {
         app.db('beer')
             .where({'beer.id': req.params.id})
@@ -127,5 +139,5 @@ module.exports = app => {
             .catch(err => res.status(500).send(err))
     }
 
-    return {save,remove,get,getById, getByUser, getByStyle, getByBrewer, getToEdit}
+    return {save,remove,get,getById, getByUser, getByStyle, getByBrewer, getToEdit, searchGet}
 }

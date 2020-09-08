@@ -10,12 +10,14 @@
         </router-link>
         </div>
       </v-toolbar-title>
-
+      
       <v-spacer></v-spacer>
 
+      <router-link to="/search">
       <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
+      </router-link>
 
       <v-menu open-on-hover offset-y>
         <template v-slot:activator="{on}">
@@ -24,14 +26,16 @@
           </v-btn>
           {{user.name}}
         </template>
+        <v-card>
+          <div class="dropdown-content">
+            <router-link class="dropdown-text" to="/user">Editar</router-link>
+            <a class="dropdown-text" href @click.prevent="logout">Sair</a>
+          </div>
+        </v-card>
 
-        <div class="dropdown-content">
-          <router-link class="dropdown-text" to="/user">Editar</router-link>
-
-          <a class="dropdown-text" href @click.prevent="logout">Sair</a>
-        </div>
       </v-menu>
     </v-app-bar>
+    
 
     <Drawer/>
   </nav>

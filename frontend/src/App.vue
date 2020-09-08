@@ -8,6 +8,7 @@
       <Loading v-if="validatingToken" /> 
 
       <Content v-else />
+      <Footer :hideFooter="!user" />
           
     </v-content>
 
@@ -21,10 +22,11 @@ import axios from 'axios'
 import {baseApiUrl, userKey} from '@/global'
 import {mapState} from 'vuex'
 import Content from '@/components/template/Content'
+import Footer from '@/components/template/Footer'
 
 export default {
   name: 'App',
-  components: {Navbar, Content, Loading},
+  components: {Navbar, Content, Loading, Footer},
   computed: mapState(['user']),
   data: function() {
     return{
@@ -64,5 +66,5 @@ export default {
 </script>
 
 <style>
- 
+
 </style>

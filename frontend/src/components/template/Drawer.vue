@@ -7,7 +7,7 @@
             <v-icon class="icon-drawer">mdi-home-outline</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
-            <v-list-item-title class="title text-drawer">
+            <v-list-item-title class="text-drawer">
               Index
             </v-list-item-title>
           </v-list-item-content>
@@ -22,7 +22,7 @@
                   <v-icon class="icon-drawer">mdi-beer-outline</v-icon>
                 </v-list-item-icon>
                 <v-list-item-content>
-                  <v-list-item-title class="title text-drawer">
+                  <v-list-item-title class="text-drawer">
                     Cervejas
                   </v-list-item-title>
                 </v-list-item-content>
@@ -44,7 +44,7 @@
                   <v-icon class="icon-drawer">mdi-certificate-outline</v-icon>
                 </v-list-item-icon>
                 <v-list-item-content>
-                  <v-list-item-title class="title text-drawer">
+                  <v-list-item-title class="text-drawer">
                     Marcas
                   </v-list-item-title>
                 </v-list-item-content>
@@ -58,6 +58,19 @@
             </div>
             </v-card>
         </v-menu>
+
+        <router-link to="/finder">
+        <v-list-item @click="toggleDrawer">
+          <v-list-item-icon>
+            <v-icon class="special">mdi-fire</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title class="special xxx">
+              Finder
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        </router-link>
         
         <router-link to="/admin">
         <v-list-item v-if="user.userType == 2 || user.userType == 3" @click="toggleDrawer">
@@ -65,7 +78,7 @@
             <v-icon class="icon-drawer">mdi-wrench-outline</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
-            <v-list-item-title class="title text-drawer">
+            <v-list-item-title class="text-drawer">
               Gerenciar
             </v-list-item-title>
           </v-list-item-content>
@@ -157,6 +170,15 @@ a {
   display: flex;
   flex-flow: column wrap;
   align-items: center;
+}
+
+.special{
+  color:firebrick !important;
+}
+
+.xxx {
+  letter-spacing: 2px;
+   
 }
 
 </style>

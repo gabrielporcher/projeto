@@ -1,8 +1,8 @@
 <template>
-  <div class="mx-8 my-8">
+  <div class="mx-8 my-5">
       <v-row>
           <v-col cols="12" lg="4" md="4" sm="12" xs="12">
-              <v-card elevation="4" min-height="600" class="pa-5">
+              <v-card elevation="4" min-height="600" class="pa-5 mb-10">
                       <p class="g1 font-weight-bold mt-2">{{beer.name}}</p>
                       <router-link :to="{ name: 'BeerByStyle', params: { id: beer.styleId }}"><p class="category-color overline">{{beer.style}}</p></router-link>
                       
@@ -15,7 +15,7 @@
               </v-sheet>
           </v-col>
           <v-col cols="12" lg="4" md="4" sm="12" xs="12">
-              <v-card class="pa-5" elevation="4" min-height="600">
+              <v-card class="pa-5 mb-10" elevation="4" min-height="600">
                     
                         <v-subheader class="g2 font-weight-bold">Sabor</v-subheader>
                         <v-slider color="orange accent-4" label="amargo" inverse-label track-color="grey" v-model="beer.ibu" readonly max="70">
@@ -46,7 +46,7 @@
                             </v-col>
 
                             <v-col cols="12" lg="6" md="6">
-                                <v-card class="d-flex " flat>
+                                <v-card class="d-flex mb-10" flat>
                                     <v-divider class="orange ml-2" vertical inset>
                                     </v-divider>
                                     <v-divider class="orange mr-2" vertical inset>

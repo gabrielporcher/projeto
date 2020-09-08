@@ -1,6 +1,6 @@
 <template>
   <div class="mx-8 my-8">
-    <v-card elevation="5">
+    <v-card elevation="5" class="mb-10">
       <v-tabs fixed-tabs background-color="grey" color="black">
         <v-tab>Cerveja</v-tab>
         <v-tab>Composição</v-tab>
@@ -38,4 +38,5 @@ export default {
 </script>
 
 <style>
+
 </style>

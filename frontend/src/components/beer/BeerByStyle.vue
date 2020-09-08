@@ -6,7 +6,7 @@
               </div>  
             </v-row>
             <div class="text-center my-5">
-              <v-btn large dark outlined color="orange darken-1" v-if="loadMore" @click="getBeers">Carregar mais</v-btn>
+              <v-btn large dark outlined color="orange darken-1" class="mb-10" v-if="loadMore" @click="getBeers">Carregar mais</v-btn>
             </div>   
   </div>
 

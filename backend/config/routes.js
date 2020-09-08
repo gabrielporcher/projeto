@@ -60,12 +60,20 @@ module.exports = app => {
         .post(brewer(app.api.beer.save))
 
         /*
+        With style join to complete Beer Card Item.
+        Without pagination for search
+        */
+    app.route('/beers/search')
+        .all(app.config.passport.authenticate())
+        .get(app.api.beer.searchGet)
+
+        /*
         return all beers without sql joins
         to edit them (with no errors)
         */
     app.route('/beers/change')
         .all(app.config.passport.authenticate())
-        .get(brewer(app.api.beer.getToEdit))
+        .get(app.api.beer.getToEdit)
 
     app.route('/beers/:id')
         .all(app.config.passport.authenticate())

@@ -1,6 +1,7 @@
 // Update with your config settings.
 
 module.exports = {
+
     client: 'postgresql',
     connection: {
       database: 'projeto_integrador',
@@ -14,5 +15,6 @@ module.exports = {
     migrations: {
       tableName: 'knex_migrations'
     }
+
 
 };

@@ -62,12 +62,23 @@ export default {
         },
 
         findOne(){
-            var counts = this.beers
+            var goal = this.sabor + this.cor + this.teor
 
-            console.log(this.sabor, this.cor, this.teor)
-            console.log(this.beers)
-            console.log(counts)
-        }
+            const selectedBeer = this.beers.reduce((ret, beer) => {
+                const score = beer.srm + beer.ibu + beer.alcohol
+                const choose = Math.abs(goal - score)
+                if(!ret) {
+                    return {...beer, similarity: choose}
+                }
+                else if (!Object.prototype.hasOwnProperty.call(ret, 'similarity') || ret.similarity > choose) {
+                    return {...beer, similarity: choose}
+                }
+                return ret;
+            })
+            console.log('selected: ', selectedBeer);
+            const id = selectedBeer.id
+            this.$router.push({ name: 'BeerPage', params: { id: `${id}` } })
+        },
     },
     mounted() {
         this.getBeers()
